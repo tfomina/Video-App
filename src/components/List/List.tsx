@@ -14,7 +14,7 @@ export const List: React.FC<IProps> = (props) => {
       {items && items.length ? (
         <ul className="list-unstyled">
           {items.map((item) => (
-            <Item item={item} onClick={onItemClick} />
+            <Item item={item} key={item.id} onClick={onItemClick} />
           ))}
         </ul>
       ) : (

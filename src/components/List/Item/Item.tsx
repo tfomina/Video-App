@@ -7,7 +7,7 @@ interface IProps {
 }
 
 export const Item: React.FC<IProps> = ({ item, onClick }) => (
-  <li className="py-1" key={item.id} onClick={onClick}>
+  <li className="py-1" onClick={onClick}>
     <a href="">{item.timestamp}</a>
   </li>
 );
