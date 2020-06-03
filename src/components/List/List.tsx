@@ -7,7 +7,7 @@ interface IProps {
   onItemClick: () => void;
 }
 
-export const List: React.FC<IProps> = (props) => {
+export const List: React.FC<IProps> = React.memo((props) => {
   const { items, onItemClick } = props;
   return (
     <div className="col-2">
@@ -22,4 +22,4 @@ export const List: React.FC<IProps> = (props) => {
       )}
     </div>
   );
-};
+});
