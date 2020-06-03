@@ -1,4 +1,5 @@
 import React from "react";
+import { msToTime } from "../../../utils";
 import { IItem } from "../../../types";
 
 interface IProps {
@@ -8,6 +9,6 @@ interface IProps {
 
 export const Item: React.FC<IProps> = React.memo(({ item, onClick }) => (
   <li className="py-1" onClick={onClick}>
-    <a href="">{item.timestamp}</a>
+    <a href="">{msToTime(item.timestamp)}</a>
   </li>
 ));
