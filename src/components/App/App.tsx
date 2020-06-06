@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "../../redux/useSelector";
 import axios from "axios";
 
 import { Layout } from "../Layout";
@@ -8,7 +9,14 @@ import { Video } from "../Video";
 import { IItem } from "../../types";
 
 export const App: React.FC = () => {
-  const [items, setItems] = useState<IItem[]>([]);
+  const items = useSelector((state) => {
+    const {
+      items: { items },
+    } = state;
+    return items || [];
+  });
+
+  /*const [items, setItems] = useState<IItem[]>([]);
 
   useEffect(() => {
     const loadData = async () => {
@@ -23,7 +31,7 @@ export const App: React.FC = () => {
       }
     };
     loadData();
-  }, []);
+  }, []);*/
 
   return (
     <Layout>

@@ -11,3 +11,7 @@ interface IZone {
   width: number;
   height: number;
 }
+
+export interface ItemsState {
+  items: IItem[];
+}
