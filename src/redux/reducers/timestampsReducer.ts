@@ -1,4 +1,5 @@
-import { ItemsState } from "../../types";
+import { Timestamp, TimestampsState } from "../../types";
+import { APP_ACTIONS } from "./../constants";
 
 const fakeData = [
   {
@@ -256,11 +257,23 @@ const fakeData = [
 ];
 
 const initialState = {
-  items: fakeData,
+  timestamps: fakeData,
+  selectedTimestamp: null,
 };
 
-export const itemsReducer = (state: ItemsState = initialState, action: any) => {
+export const timestampsReducer = (
+  state: TimestampsState = initialState,
+  action: any
+) => {
   switch (action.type) {
+    case APP_ACTIONS.SELECT_TIMESTAMP: {
+      const { selectedTimestamp } = action.payload;
+      return {
+        ...state,
+        selectedTimestamp,
+      };
+    }
+
     default:
       return state;
   }

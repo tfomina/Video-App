@@ -1,17 +1,18 @@
-export interface IItem {
+export interface Timestamp {
   id: number;
   timestamp: number;
   duration: number;
-  zone: IZone;
+  zone: Zone;
 }
 
-interface IZone {
+interface Zone {
   left: number;
   top: number;
   width: number;
   height: number;
 }
 
-export interface ItemsState {
-  items: IItem[];
+export interface TimestampsState {
+  timestamps: Timestamp[];
+  selectedTimestamp: Timestamp | null;
 }

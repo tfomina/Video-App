@@ -1,0 +1,3 @@
+export const APP_ACTIONS = {
+  SELECT_TIMESTAMP: "SELECT_TIMESTAMP",
+};

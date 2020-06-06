@@ -5,10 +5,10 @@ import { Layout } from "../Layout";
 import { List } from "../List";
 import { Video } from "../Video";
 
-import { IItem } from "../../types";
+import { Timestamp } from "../../types";
 
 export const App: React.FC = () => {
-  /*const [items, setItems] = useState<IItem[]>([]);
+  /*const [items, setItems] = useState<Timestamp[]>([]);
 
   useEffect(() => {
     const loadData = async () => {
@@ -28,7 +28,7 @@ export const App: React.FC = () => {
   return (
     <Layout>
       <Video />
-      <List onItemClick={() => {}} />
+      <List />
     </Layout>
   );
 };

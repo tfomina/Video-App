@@ -1,29 +1,22 @@
 import React from "react";
 import { useSelector } from "../../redux/useSelector";
 import { Item } from "./Item";
-import { IItem } from "../../types";
+import { Timestamp } from "../../types";
 
-interface IProps {
-  //items: IItem[];
-  onItemClick: () => void;
-}
-
-export const List: React.FC<IProps> = React.memo((props) => {
-  const { onItemClick } = props;
-
-  const items = useSelector((state) => {
+export const List: React.FC = React.memo(() => {
+  const timestamps = useSelector((state) => {
     const {
-      items: { items },
+      timestamps: { timestamps },
     } = state;
-    return items || [];
+    return timestamps || [];
   });
 
   return (
     <div className="col-2">
-      {items && items.length ? (
+      {timestamps && timestamps.length ? (
         <ul className="list-unstyled">
-          {items.map((item) => (
-            <Item item={item} key={item.id} onClick={onItemClick} />
+          {timestamps.map((timestamp) => (
+            <Item item={timestamp} key={timestamp.id} />
           ))}
         </ul>
       ) : (

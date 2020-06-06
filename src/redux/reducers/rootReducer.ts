@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
 
-import { itemsReducer } from "./itemsReducer";
+import { timestampsReducer } from "./timestampsReducer";
 
-export const rootReducer = combineReducers({ items: itemsReducer });
+export const rootReducer = combineReducers({ timestamps: timestampsReducer });
