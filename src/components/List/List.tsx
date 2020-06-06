@@ -1,14 +1,23 @@
 import React from "react";
+import { useSelector } from "../../redux/useSelector";
 import { Item } from "./Item";
 import { IItem } from "../../types";
 
 interface IProps {
-  items: IItem[];
+  //items: IItem[];
   onItemClick: () => void;
 }
 
 export const List: React.FC<IProps> = React.memo((props) => {
-  const { items, onItemClick } = props;
+  const { onItemClick } = props;
+
+  const items = useSelector((state) => {
+    const {
+      items: { items },
+    } = state;
+    return items || [];
+  });
+
   return (
     <div className="col-2">
       {items && items.length ? (
