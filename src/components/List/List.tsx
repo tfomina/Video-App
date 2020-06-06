@@ -1,7 +1,6 @@
 import React from "react";
 import { useSelector } from "../../redux/useSelector";
 import { Item } from "./Item";
-import { Timestamp } from "../../types";
 
 export const List: React.FC = React.memo(() => {
   const timestamps = useSelector((state) => {
@@ -15,7 +14,7 @@ export const List: React.FC = React.memo(() => {
     <div className="col-2">
       {timestamps && timestamps.length ? (
         <ul className="list-unstyled">
-          {timestamps.map((timestamp) => (
+          {timestamps.map((timestamp: any) => (
             <Item item={timestamp} key={timestamp.id} />
           ))}
         </ul>

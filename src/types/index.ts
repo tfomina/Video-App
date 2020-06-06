@@ -16,3 +16,7 @@ export interface TimestampsState {
   timestamps: Timestamp[];
   selectedTimestamp: Timestamp | null;
 }
+
+export interface AppState {
+  loading: boolean;
+}
