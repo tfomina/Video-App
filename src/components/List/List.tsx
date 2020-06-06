@@ -11,7 +11,7 @@ export const List: React.FC = React.memo(() => {
   });
 
   return (
-    <div className="col-2">
+    <div className="col-4">
       {timestamps && timestamps.length ? (
         <ul className="list-unstyled">
           {timestamps.map((timestamp: any) => (

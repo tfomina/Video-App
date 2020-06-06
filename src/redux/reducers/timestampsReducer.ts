@@ -1,5 +1,6 @@
 import { Timestamp, TimestampsState } from "../../types";
 import { APP_ACTIONS } from "./../constants";
+import { compareTimestamps } from "../../utils";
 
 const initialState = {
   timestamps: [],
@@ -23,7 +24,7 @@ export const timestampsReducer = (
       const { timestamps } = action.payload;
       return {
         ...state,
-        timestamps,
+        timestamps: timestamps.sort(compareTimestamps),
       };
     }
 

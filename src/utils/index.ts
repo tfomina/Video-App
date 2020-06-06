@@ -1,3 +1,5 @@
+import { Timestamp } from "../types";
+
 export const msToTime = (timestamp: number) => {
   const milliseconds = timestamp % 1000;
   const seconds = Math.floor((timestamp / 1000) % 60);
@@ -13,3 +15,6 @@ export const msToTime = (timestamp: number) => {
 };
 
 const withZero = (v: number) => (v < 10 ? "0" + v : v);
+
+export const compareTimestamps = (a: Timestamp, b: Timestamp) =>
+  a.timestamp - b.timestamp;
