@@ -1,22 +1,25 @@
-export interface Timestamp {
+export type Timestamp = {
   id: number;
   timestamp: number;
   duration: number;
   zone: Zone;
-}
+};
 
-interface Zone {
+type Zone = {
   left: number;
   top: number;
   width: number;
   height: number;
-}
+};
 
-export interface TimestampsState {
+export type Sort = "asc" | "desc";
+
+export type TimestampsState = {
   timestamps: Timestamp[];
   selectedTimestamp: Timestamp | null;
-}
+  sort: Sort;
+};
 
-export interface AppState {
+export type AppState = {
   loading: boolean;
-}
+};

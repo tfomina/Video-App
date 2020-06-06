@@ -1,4 +1,4 @@
-import { Timestamp } from "../types";
+import { Timestamp, Sort } from "../types";
 
 export const msToTime = (timestamp: number) => {
   const milliseconds = timestamp % 1000;
@@ -16,5 +16,12 @@ export const msToTime = (timestamp: number) => {
 
 const withZero = (v: number) => (v < 10 ? "0" + v : v);
 
-export const compareTimestamps = (a: Timestamp, b: Timestamp) =>
-  a.timestamp - b.timestamp;
+export const compareTimestamps = (
+  a: Timestamp,
+  b: Timestamp,
+  sort: Sort = "asc"
+) => {
+  const comparison = a.timestamp - b.timestamp;
+
+  return sort === "asc" ? comparison : comparison * -1;
+};

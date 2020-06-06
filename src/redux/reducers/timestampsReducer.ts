@@ -1,10 +1,11 @@
-import { Timestamp, TimestampsState } from "../../types";
+import { Timestamp, TimestampsState, Sort } from "../../types";
 import { APP_ACTIONS } from "./../constants";
 import { compareTimestamps } from "../../utils";
 
 const initialState = {
   timestamps: [],
   selectedTimestamp: null,
+  sort: "asc" as Sort,
 };
 
 export const timestampsReducer = (
@@ -25,6 +26,17 @@ export const timestampsReducer = (
       return {
         ...state,
         timestamps: timestamps.sort(compareTimestamps),
+      };
+    }
+
+    case APP_ACTIONS.SORT_TIMESTAMPS: {
+      const sort = state.sort === "asc" ? "desc" : "asc";
+      return {
+        ...state,
+        sort,
+        timestamps: [
+          ...state.timestamps.sort((a, b) => compareTimestamps(a, b, sort)),
+        ],
       };
     }
 

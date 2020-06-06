@@ -29,4 +29,8 @@ const selectTimestampAction = (payload: { selectedTimestamp: Timestamp }) => ({
   payload,
 });
 
-export { selectTimestampAction, loadTimestampsAction };
+const sortTimestampsAction = () => ({
+  type: APP_ACTIONS.SORT_TIMESTAMPS,
+});
+
+export { selectTimestampAction, loadTimestampsAction, sortTimestampsAction };
