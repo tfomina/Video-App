@@ -21,13 +21,13 @@ export const List: React.FC = React.memo(() => {
   };
 
   return (
-    <div className="col-4">
+    <div className="col-2">
       {timestamps && timestamps.length ? (
         <>
           <div className="d-flex flex-row-reverse">
             <button
               type="button"
-              className="btn btn-success"
+              className="btn btn-success w-100"
               onClick={onSortClick}
             >
               {sort === "asc" ? <ArrowDown /> : <ArrowUp />} Сортировать

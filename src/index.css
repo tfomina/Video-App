@@ -7,3 +7,8 @@ body,
 button {
   box-shadow: none !important;
 }
+
+.container {
+  width: 1580px !important;
+  max-width: 1920px !important;
+}
