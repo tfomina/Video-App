@@ -13,7 +13,7 @@ export const Rectangle: React.FC<IProps> = React.memo(
         left: left,
         width: width,
         height: height,
-        border: "5px solid #dc3545",
+        backgroundColor: "#dc3545",
       }}
     ></div>
   )
