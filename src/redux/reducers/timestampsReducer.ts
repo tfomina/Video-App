@@ -10,7 +10,7 @@ const initialState = {
 
 export const timestampsReducer = (
   state: TimestampsState = initialState,
-  action: any
+  action: any // TODO ТИПИЗАЦИЯ
 ) => {
   switch (action.type) {
     case APP_ACTIONS.SELECT_TIMESTAMP: {
@@ -22,10 +22,21 @@ export const timestampsReducer = (
     }
 
     case APP_ACTIONS.LOAD_TIMESTAMPS: {
+      return state;
+    }
+
+    case APP_ACTIONS.LOAD_TIMESTAMPS_SUCCESS: {
       const { timestamps } = action.payload;
       return {
         ...state,
         timestamps: timestamps.sort(compareTimestamps),
+      };
+    }
+
+    case APP_ACTIONS.LOAD_TIMESTAMPS_ERROR: {
+      return {
+        ...state,
+        timestamps: [],
       };
     }
 

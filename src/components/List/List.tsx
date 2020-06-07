@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "../../redux/useSelector";
-import { sortTimestampsAction } from "./../../redux/actions/timestamps";
+import { sortTimestamps } from "./../../redux/actions/timestamps";
 import { Item } from "./Item";
 import { ArrowUp } from "./../ArrowUp";
 import { ArrowDown } from "./../ArrowDown";
@@ -16,8 +16,8 @@ export const List: React.FC = React.memo(() => {
     return { timestamps, sort };
   });
 
-  const sortTimestamps = () => {
-    dispatch(sortTimestampsAction());
+  const onSortClick = () => {
+    dispatch(sortTimestamps());
   };
 
   return (
@@ -28,7 +28,7 @@ export const List: React.FC = React.memo(() => {
             <button
               type="button"
               className="btn btn-success"
-              onClick={sortTimestamps}
+              onClick={onSortClick}
             >
               {sort === "asc" ? <ArrowDown /> : <ArrowUp />} Сортировать
             </button>

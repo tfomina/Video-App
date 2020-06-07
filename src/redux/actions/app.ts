@@ -1,11 +1,11 @@
 import { APP_ACTIONS } from "../constants";
 
-const showLoaderAction = () => ({
+const showLoader = () => ({
   type: APP_ACTIONS.SHOW_LOADER,
 });
 
-const hideLoaderAction = () => ({
+const hideLoader = () => ({
   type: APP_ACTIONS.HIDE_LOADER,
 });
 
-export { showLoaderAction, hideLoaderAction };
+export { showLoader, hideLoader };

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "../../redux/useSelector";
-import { loadTimestampsAction } from "./../../redux/actions/timestamps";
+import { loadTimestamps } from "./../../redux/actions/timestamps";
 
 import { Layout } from "../Layout";
 import { List } from "../List";
@@ -14,7 +14,7 @@ export const App: React.FC = () => {
   const loading = useSelector((state) => state.app.loading);
 
   useEffect(() => {
-    dispatch(loadTimestampsAction());
+    dispatch(loadTimestamps());
   }, []);
 
   if (loading) return <Loader />;

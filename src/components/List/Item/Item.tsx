@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "../../../redux/useSelector";
-import { selectTimestampAction } from "./../../../redux/actions/timestamps";
+import { selectTimestamp } from "./../../../redux/actions/timestamps";
 import clsx from "clsx";
 import { msToTime } from "../../../utils";
 import { Timestamp } from "../../../types";
@@ -24,7 +24,7 @@ export const Item: React.FC<IProps> = React.memo(({ item }) => {
     e.preventDefault();
 
     dispatch(
-      selectTimestampAction({
+      selectTimestamp({
         selectedTimestamp: item,
       })
     );
