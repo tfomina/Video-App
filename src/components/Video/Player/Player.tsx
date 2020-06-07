@@ -7,7 +7,7 @@ const VIDEO_URL =
   "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4";
 
 export const Player: React.FC = React.memo(() => {
-  const player = useRef<any>(null);
+  const player = useRef<ReactPlayer>(null);
   const [duration, setDuration] = useState<number>(0);
   const [isReady, setIsReady] = useState<boolean>(false);
 
