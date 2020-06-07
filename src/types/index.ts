@@ -5,7 +5,7 @@ export type Timestamp = {
   zone: Zone;
 };
 
-type Zone = {
+export type Zone = {
   left: number;
   top: number;
   width: number;
@@ -22,4 +22,8 @@ export type TimestampsState = {
 
 export type AppState = {
   loading: boolean;
+};
+
+export type VideoState = {
+  currentTime: number;
 };

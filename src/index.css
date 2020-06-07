@@ -12,3 +12,9 @@ button {
   width: 1580px !important;
   max-width: 1920px !important;
 }
+
+.video-wrapper {
+  width: 1280px;
+  height: 720px;
+  position: relative;
+}

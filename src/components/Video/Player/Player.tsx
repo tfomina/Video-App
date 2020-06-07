@@ -1,15 +1,20 @@
 import React, { useState, useEffect, useRef } from "react";
-import ReactPlayer from "react-player";
+import { useDispatch } from "react-redux";
 import { useSelector } from "../../../redux/useSelector";
+import ReactPlayer, { ReactPlayerProps } from "react-player";
 import { msToSeconds } from "../../../utils";
+import { setCurrentTime } from "./../../../redux/actions/video";
 
 const VIDEO_URL =
   "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4";
 
 export const Player: React.FC = React.memo(() => {
   const player = useRef<ReactPlayer>(null);
+
   const [duration, setDuration] = useState<number>(0);
   const [isReady, setIsReady] = useState<boolean>(false);
+
+  const dispatch = useDispatch();
 
   const targetTimestamp = useSelector((state) => {
     const {
@@ -30,8 +35,16 @@ export const Player: React.FC = React.memo(() => {
       player.current.seekTo(targetTimestampInSeconds, "seconds");
   }, [targetTimestamp]);
 
-  const handleDuration = (duration: number) => {
+  const handleDuration: ReactPlayerProps["onDuration"] = (duration) => {
     setDuration(duration);
+  };
+
+  const handleProgress: ReactPlayerProps["onProgress"] = (progress) => {
+    dispatch(
+      setCurrentTime({
+        currentTime: progress.playedSeconds * 1000,
+      })
+    );
   };
 
   return (
@@ -42,6 +55,7 @@ export const Player: React.FC = React.memo(() => {
       width={1280}
       height={720}
       onDuration={handleDuration}
+      onProgress={handleProgress}
       onReady={() => setIsReady(true)}
     />
   );
