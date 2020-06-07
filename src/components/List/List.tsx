@@ -34,7 +34,7 @@ export const List: React.FC = React.memo(() => {
             </button>
           </div>
           <ul className="list-unstyled">
-            {timestamps.map((timestamp: any) => (
+            {timestamps.map((timestamp) => (
               <Item item={timestamp} key={timestamp.id} />
             ))}
           </ul>
