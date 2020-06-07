@@ -41,13 +41,10 @@ export const timestampsReducer = (
     }
 
     case APP_ACTIONS.SORT_TIMESTAMPS: {
-      const sort = state.sort === "asc" ? "desc" : "asc";
       return {
         ...state,
-        sort,
-        timestamps: [
-          ...state.timestamps.sort((a, b) => compareTimestamps(a, b, sort)),
-        ],
+        sort: state.sort === "asc" ? "desc" : "asc",
+        timestamps: [...state.timestamps.reverse()],
       };
     }
 
