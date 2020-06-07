@@ -25,3 +25,5 @@ export const compareTimestamps = (
 
   return sort === "asc" ? comparison : comparison * -1;
 };
+
+export const msToSeconds = (timestamp: number) => timestamp / 1000.0;

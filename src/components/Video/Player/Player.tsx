@@ -1,24 +1,38 @@
-import React, { useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import ReactPlayer from "react-player";
 import { useSelector } from "../../../redux/useSelector";
+import { msToSeconds } from "../../../utils";
 
 const VIDEO_URL =
   "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4";
 
 export const Player: React.FC = React.memo(() => {
   const player = useRef<any>(null);
+  const [duration, setDuration] = useState<number>(0);
+  const [isReady, setIsReady] = useState<boolean>(false);
 
   const targetTimestamp = useSelector((state) => {
     const {
       timestamps: { selectedTimestamp },
     } = state;
-    return (selectedTimestamp && selectedTimestamp.timestamp) || 0;
+    return selectedTimestamp && selectedTimestamp.timestamp;
   });
 
   useEffect(() => {
-    console.log(player.current);
-    //player.current && player.current.seekTo(targetTimestamp);
+    if (!targetTimestamp) return;
+
+    const targetTimestampInSeconds = msToSeconds(targetTimestamp);
+
+    if (targetTimestampInSeconds > duration) return;
+
+    isReady &&
+      player.current &&
+      player.current.seekTo(targetTimestampInSeconds, "seconds");
   }, [targetTimestamp]);
+
+  const handleDuration = (duration: number) => {
+    setDuration(duration);
+  };
 
   return (
     <ReactPlayer
@@ -27,34 +41,8 @@ export const Player: React.FC = React.memo(() => {
       controls
       width={1280}
       height={720}
+      onDuration={handleDuration}
+      onReady={() => setIsReady(true)}
     />
   );
 });
-
-/*import React, { Component } from "react";
-import ReactPlayer from "react-player";
-
-interface IProps {}
-
-interface IState {}
-
-class Player extends Component<IProps, IState> {
-  player: any;
-  constructor(props: IProps) {
-    super(props);
-    this.player = React.createRef();
-  }
-  render() {
-    return (
-      <ReactPlayer
-        ref={this.player}
-        controls
-        width={1280}
-        height={720}
-        url="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-      />
-    );
-  }
-}
-
-export default Player;*/
