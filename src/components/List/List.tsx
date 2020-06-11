@@ -1,10 +1,14 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "../../redux/useSelector";
-import { sortTimestamps } from "./../../redux/actions/timestamps";
+import {
+  sortTimestamps,
+  selectTimestamp,
+} from "./../../redux/actions/timestamps";
 import { Item } from "./Item";
 import { ArrowUp } from "./../ArrowUp";
 import { ArrowDown } from "./../ArrowDown";
+import { Timestamp } from "src/types";
 
 export const List: React.FC = React.memo(() => {
   const dispatch = useDispatch();
@@ -18,6 +22,10 @@ export const List: React.FC = React.memo(() => {
 
   const onSortClick = () => {
     dispatch(sortTimestamps());
+  };
+
+  const onSelectTimestamp = (item: Timestamp) => {
+    dispatch(selectTimestamp({ selectedTimestamp: item }));
   };
 
   return (
@@ -35,7 +43,11 @@ export const List: React.FC = React.memo(() => {
           </div>
           <ul className="list-unstyled">
             {timestamps.map((timestamp) => (
-              <Item item={timestamp} key={timestamp.id} />
+              <Item
+                item={timestamp}
+                key={timestamp.id}
+                selectTimestamp={onSelectTimestamp}
+              />
             ))}
           </ul>
         </>
