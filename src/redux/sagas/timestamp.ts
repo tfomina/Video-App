@@ -12,7 +12,8 @@ function* loadTimestampsHandler() {
   yield put(showLoader());
 
   try {
-    const timestamps = yield call(loadTimestampsApi);
+    const result = yield call(loadTimestampsApi);
+    const timestamps = result.data || [];
     yield put(loadTimestampsSuccess({ timestamps }));
   } catch (e) {
     yield put(loadTimestampsError());
