@@ -1,5 +1,5 @@
 import { call, put, takeEvery } from "redux-saga/effects";
-import { loadTimestampsApi } from "../../api";
+import * as api from "../../api";
 import { showLoader, hideLoader } from "../actions/app";
 import {
   loadTimestampsSuccess,
@@ -12,7 +12,7 @@ function* loadTimestampsHandler() {
   yield put(showLoader());
 
   try {
-    const result = yield call(loadTimestampsApi);
+    const result = yield call(api.loadTimestamps);
     const timestamps = result.data || [];
     yield put(loadTimestampsSuccess({ timestamps }));
   } catch (e) {
