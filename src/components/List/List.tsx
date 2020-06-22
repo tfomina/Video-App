@@ -32,15 +32,14 @@ export const List: React.FC = React.memo(() => {
     <div className="col-2">
       {timestamps && timestamps.length ? (
         <>
-          <div className="d-flex flex-row-reverse">
-            <button
-              type="button"
-              className="btn btn-success w-100"
-              onClick={onSortClick}
-            >
-              {sort === "asc" ? <ArrowDown /> : <ArrowUp />} Сортировать
-            </button>
-          </div>
+          <button
+            type="button"
+            className="btn btn-success w-100"
+            onClick={onSortClick}
+          >
+            {sort === "asc" ? <ArrowDown /> : <ArrowUp />} Сортировать
+          </button>
+
           <ul className="list-unstyled">
             {timestamps.map((timestamp) => (
               <Item
