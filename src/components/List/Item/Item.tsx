@@ -23,20 +23,20 @@ export const Item: React.FC<IProps> = React.memo(
       selectTimestamp(item);
     };
 
+    const isSelected = selectedTimestamp && item.id === selectedTimestamp.id;
+
     return (
       <li
         className={clsx(
           "my-1 bg-secondary",
-          selectedTimestamp && item.id === selectedTimestamp.id && "bg-success"
+          isSelected && "bg-success"
         )}
       >
         <a
           href="#"
           className={clsx(
             "d-block text-white text-decoration-none p-2",
-            selectedTimestamp &&
-              item.id === selectedTimestamp.id &&
-              "font-weight-bold"
+            isSelected && "font-weight-bold"
           )}
           onClick={(e) => onClick(e, item)}
         >
