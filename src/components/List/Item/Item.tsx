@@ -26,12 +26,7 @@ export const Item: React.FC<IProps> = React.memo(
     const isSelected = selectedTimestamp && item.id === selectedTimestamp.id;
 
     return (
-      <li
-        className={clsx(
-          "my-1 bg-secondary",
-          isSelected && "bg-success"
-        )}
-      >
+      <li className={clsx("my-1 bg-secondary", isSelected && "bg-success")}>
         <a
           href="#"
           className={clsx(
