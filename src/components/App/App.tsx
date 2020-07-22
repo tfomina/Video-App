@@ -8,7 +8,7 @@ import { List } from "../List";
 import { Video } from "../Video";
 import { Loader } from "../Loader";
 
-export const App: React.FC = () => {
+const useApp = () => {
   const dispatch = useDispatch();
 
   const loading = useSelector((state) => state.app.loading);
@@ -16,6 +16,12 @@ export const App: React.FC = () => {
   useEffect(() => {
     dispatch(loadTimestamps());
   }, []);
+
+  return loading;
+};
+
+export const App: React.FC = () => {
+  const loading = useApp();
 
   if (loading) return <Loader />;
 
