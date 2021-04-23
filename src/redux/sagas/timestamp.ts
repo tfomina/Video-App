@@ -8,12 +8,14 @@ import {
 
 import { APP_ACTIONS } from "./../constants";
 
+import { data } from "../../../mockData";
+
 function* loadTimestampsHandler() {
   yield put(showLoader());
 
   try {
     const result = yield call(api.loadTimestamps);
-    const timestamps = result.data || [];
+    const timestamps = result.data || data;
     yield put(loadTimestampsSuccess({ timestamps }));
   } catch (e) {
     yield put(loadTimestampsError());

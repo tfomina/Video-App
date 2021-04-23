@@ -20,7 +20,7 @@ export const Player: React.FC = React.memo(() => {
     const {
       timestamps: { selectedTimestamp },
     } = state;
-    return selectedTimestamp && selectedTimestamp.timestamp;
+    return selectedTimestamp?.timestamp;
   });
 
   useEffect(() => {
@@ -30,9 +30,7 @@ export const Player: React.FC = React.memo(() => {
 
     if (targetTimestampInSeconds > duration) return;
 
-    isReady &&
-      player.current &&
-      player.current.seekTo(targetTimestampInSeconds, "seconds");
+    isReady && player.current?.seekTo(targetTimestampInSeconds, "seconds");
   }, [targetTimestamp]);
 
   const handleDuration: ReactPlayerProps["onDuration"] = (duration) => {
